@@ -21,6 +21,19 @@ def get_css() -> str:
             background-color: #dde2e8 !important;
             border-bottom: none !important;
             box-shadow: none !important;
+            position: relative !important;
+        }
+        header::after {
+            content: "Borrador  \2192  Solicitud  \2192  Planificación  \2192  Ejecución";
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            color: #dc3545 !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            white-space: nowrap !important;
+            pointer-events: none !important;
         }
         [data-testid="stToolbar"]        { visibility: hidden !important; }
         [data-testid="stToolbarActions"] { visibility: hidden !important; }
