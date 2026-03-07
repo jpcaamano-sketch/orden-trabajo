@@ -27,10 +27,8 @@ def get_css() -> str:
         [data-testid="stDecoration"]     { display: none !important; }
         [data-testid="stStatusWidget"]   { display: none !important; }
         [data-testid="collapsedControl"] { visibility: visible !important; display: flex !important; }
-        [data-testid="stAppViewBlockContainer"] > div:first-child { padding-top: 0.5rem !important; }
-
         .block-container {
-            padding-top: 2rem;
+            padding-top: 3.5rem !important;
             padding-bottom: 2rem;
             max-width: 1100px;
         }
