@@ -23,6 +23,7 @@ def get_css() -> str:
         [data-testid="stStatusWidget"]   { display: none !important; }
         [data-testid="stDecoration"]     { display: none !important; }
         [data-testid="stAppViewBlockContainer"] > div:first-child { padding-top: 0.5rem !important; }
+        [data-testid="collapsedControl"] { display: flex !important; visibility: visible !important; }
 
         .block-container {
             padding-top: 2rem;
