@@ -24,7 +24,7 @@ def get_css() -> str:
             position: relative !important;
         }
         header::after {
-            content: "Borrador  \2192  Solicitud  \2192  Planificación  \2192  Ejecución";
+            content: "Borrador  →  Solicitud  →  Planificación  →  Ejecución";
             position: absolute !important;
             top: 50% !important;
             left: 50% !important;
@@ -41,7 +41,7 @@ def get_css() -> str:
         [data-testid="stStatusWidget"]   { display: none !important; }
         [data-testid="collapsedControl"] { visibility: visible !important; display: flex !important; }
         .block-container {
-            padding-top: 3.5rem !important;
+            padding-top: 1.5rem !important;
             padding-bottom: 2rem;
             max-width: 1100px;
         }
