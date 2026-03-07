@@ -67,4 +67,11 @@ else:
     def render():
         st.warning("Página no encontrada.")
 
+st.markdown(
+    '<p style="text-align:center; color:#dc3545; font-weight:600; font-size:0.95rem; margin-bottom:0.5rem;">'
+    'Borrador &nbsp;→&nbsp; Solicitud &nbsp;→&nbsp; Planificación &nbsp;→&nbsp; Ejecución'
+    '</p>',
+    unsafe_allow_html=True,
+)
+
 render()
