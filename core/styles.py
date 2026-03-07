@@ -15,9 +15,8 @@ def get_css() -> str:
             background-color: #ffffff !important;
         }
 
-        #MainMenu { visibility: hidden; }
-        footer    { visibility: hidden; }
-        header    { visibility: hidden; }
+        #MainMenu                        { display: none !important; }
+        footer                           { display: none !important; }
         [data-testid="stToolbar"]        { display: none !important; }
         [data-testid="stToolbarActions"] { display: none !important; }
         [data-testid="stStatusWidget"]   { display: none !important; }
