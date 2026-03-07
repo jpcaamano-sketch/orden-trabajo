@@ -17,8 +17,10 @@ def get_css() -> str:
 
         #MainMenu { display: none !important; }
         footer    { display: none !important; }
+        header    { visibility: hidden !important; }
         [data-testid="stDecoration"]   { display: none !important; }
         [data-testid="stStatusWidget"] { display: none !important; }
+        [data-testid="stToolbar"]      { display: none !important; }
         [data-testid="stAppViewBlockContainer"] > div:first-child { padding-top: 0.5rem !important; }
 
         .block-container {
@@ -27,11 +29,17 @@ def get_css() -> str:
             max-width: 1100px;
         }
 
-        /* Sidebar navy */
+        /* Sidebar navy — siempre visible, sin colapsar */
         section[data-testid="stSidebar"] {
             background: #1a3a5c !important;
             box-shadow: 4px 0 15px rgba(0,0,0,0.2) !important;
+            transform: translateX(0) !important;
+            min-width: 244px !important;
+            width: 244px !important;
         }
+        /* Ocultar boton colapsar sidebar */
+        [data-testid="stSidebarCollapseButton"],
+        [data-testid="collapsedControl"] { display: none !important; }
         section[data-testid="stSidebar"] > div {
             background: transparent !important;
             padding-top: 0.5rem !important;
@@ -128,49 +136,6 @@ def get_css() -> str:
 
 def apply_styles(st):
     st.markdown(get_css(), unsafe_allow_html=True)
-    import streamlit.components.v1 as components
-    components.html("""<script>
-function fixUI() {
-    var doc = window.parent.document;
-
-    // Ocultar toolbar (deploy, settings, etc.) pero NO el boton del sidebar
-    var hideSelectors = [
-        '[data-testid="stToolbar"]',
-        '[data-testid="stToolbarActions"]',
-        'header [data-testid="stMainMenuButton"]',
-    ];
-    hideSelectors.forEach(function(sel) {
-        doc.querySelectorAll(sel).forEach(function(el) {
-            // Si contiene el boton del sidebar, ocultar solo los hijos que NO son el boton
-            var hasCollapsed = el.querySelector('[data-testid="collapsedControl"]');
-            if (hasCollapsed) {
-                Array.from(el.children).forEach(function(child) {
-                    if (!child.contains(hasCollapsed) && child !== hasCollapsed) {
-                        child.style.display = 'none';
-                    }
-                });
-            } else {
-                el.style.display = 'none';
-            }
-        });
-    });
-
-    // Forzar visibilidad del boton abrir/cerrar sidebar
-    var btn = doc.querySelector('[data-testid="collapsedControl"]');
-    if (btn) {
-        btn.style.cssText += ';display:flex!important;visibility:visible!important;opacity:1!important;';
-        var par = btn.parentElement;
-        while (par && par !== doc.body) {
-            par.style.overflow = 'visible';
-            par = par.parentElement;
-        }
-    }
-}
-fixUI();
-setTimeout(fixUI, 300);
-setTimeout(fixUI, 800);
-new MutationObserver(fixUI).observe(window.parent.document.body, {childList:true, subtree:true});
-</script>""", height=0)
 
 
 def metric_card(value, label: str) -> str:
