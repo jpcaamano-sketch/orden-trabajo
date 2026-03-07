@@ -15,25 +15,11 @@ def get_css() -> str:
             background-color: #ffffff !important;
         }
 
-        /* Header invisible (mismo color fondo) pero presente en el DOM */
-        header {
-            background-color: #dde2e8 !important;
-            border-bottom: none !important;
-            box-shadow: none !important;
-        }
-        #MainMenu                        { display: none !important; }
-        footer                           { display: none !important; }
-        /* visibility:hidden en vez de display:none para que collapsedControl pueda sobreescribir */
-        [data-testid="stToolbar"]        { visibility: hidden !important; }
-        [data-testid="stToolbarActions"] { visibility: hidden !important; }
-        [data-testid="stStatusWidget"]   { display: none !important; }
-        [data-testid="stDecoration"]     { display: none !important; }
+        #MainMenu { display: none !important; }
+        footer    { display: none !important; }
+        [data-testid="stDecoration"]   { display: none !important; }
+        [data-testid="stStatusWidget"] { display: none !important; }
         [data-testid="stAppViewBlockContainer"] > div:first-child { padding-top: 0.5rem !important; }
-        /* Boton abrir/cerrar sidebar siempre visible */
-        [data-testid="collapsedControl"] {
-            visibility: visible !important;
-            display: flex !important;
-        }
 
         .block-container {
             padding-top: 2rem;
@@ -142,6 +128,49 @@ def get_css() -> str:
 
 def apply_styles(st):
     st.markdown(get_css(), unsafe_allow_html=True)
+    import streamlit.components.v1 as components
+    components.html("""<script>
+function fixUI() {
+    var doc = window.parent.document;
+
+    // Ocultar toolbar (deploy, settings, etc.) pero NO el boton del sidebar
+    var hideSelectors = [
+        '[data-testid="stToolbar"]',
+        '[data-testid="stToolbarActions"]',
+        'header [data-testid="stMainMenuButton"]',
+    ];
+    hideSelectors.forEach(function(sel) {
+        doc.querySelectorAll(sel).forEach(function(el) {
+            // Si contiene el boton del sidebar, ocultar solo los hijos que NO son el boton
+            var hasCollapsed = el.querySelector('[data-testid="collapsedControl"]');
+            if (hasCollapsed) {
+                Array.from(el.children).forEach(function(child) {
+                    if (!child.contains(hasCollapsed) && child !== hasCollapsed) {
+                        child.style.display = 'none';
+                    }
+                });
+            } else {
+                el.style.display = 'none';
+            }
+        });
+    });
+
+    // Forzar visibilidad del boton abrir/cerrar sidebar
+    var btn = doc.querySelector('[data-testid="collapsedControl"]');
+    if (btn) {
+        btn.style.cssText += ';display:flex!important;visibility:visible!important;opacity:1!important;';
+        var par = btn.parentElement;
+        while (par && par !== doc.body) {
+            par.style.overflow = 'visible';
+            par = par.parentElement;
+        }
+    }
+}
+fixUI();
+setTimeout(fixUI, 300);
+setTimeout(fixUI, 800);
+new MutationObserver(fixUI).observe(window.parent.document.body, {childList:true, subtree:true});
+</script>""", height=0)
 
 
 def metric_card(value, label: str) -> str:
