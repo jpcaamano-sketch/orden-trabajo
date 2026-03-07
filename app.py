@@ -34,12 +34,6 @@ PAGINAS = [
 ]
 
 with st.sidebar:
-    st.markdown(
-        '<a href="http://localhost:8520" target="_self" '
-        'style="display:block;color:rgba(255,255,255,0.7);font-size:0.82rem;'
-        'text-decoration:none;margin-bottom:8px;">← Volver al Hub</a>',
-        unsafe_allow_html=True,
-    )
     st.title("🔧 Órdenes de Trabajo")
     st.divider()
     pagina = st.radio("nav", PAGINAS, label_visibility="collapsed", key="nav_radio")
