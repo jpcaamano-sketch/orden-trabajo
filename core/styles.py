@@ -15,7 +15,7 @@ def get_css() -> str:
             background-color: #ffffff !important;
         }
 
-        /* Header: mismo color que el fondo para que sea invisible */
+        /* Header invisible (mismo color fondo) pero presente en el DOM */
         header {
             background-color: #dde2e8 !important;
             border-bottom: none !important;
@@ -23,11 +23,17 @@ def get_css() -> str:
         }
         #MainMenu                        { display: none !important; }
         footer                           { display: none !important; }
-        [data-testid="stToolbar"]        { display: none !important; }
-        [data-testid="stToolbarActions"] { display: none !important; }
+        /* visibility:hidden en vez de display:none para que collapsedControl pueda sobreescribir */
+        [data-testid="stToolbar"]        { visibility: hidden !important; }
+        [data-testid="stToolbarActions"] { visibility: hidden !important; }
         [data-testid="stStatusWidget"]   { display: none !important; }
         [data-testid="stDecoration"]     { display: none !important; }
         [data-testid="stAppViewBlockContainer"] > div:first-child { padding-top: 0.5rem !important; }
+        /* Boton abrir/cerrar sidebar siempre visible */
+        [data-testid="collapsedControl"] {
+            visibility: visible !important;
+            display: flex !important;
+        }
 
         .block-container {
             padding-top: 2rem;
