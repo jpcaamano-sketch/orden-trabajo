@@ -17,6 +17,16 @@ def get_css() -> str:
 
         #MainMenu { visibility: hidden; }
         footer    { visibility: hidden; }
+        header {
+            background-color: #dde2e8 !important;
+            border-bottom: none !important;
+            box-shadow: none !important;
+        }
+        [data-testid="stToolbar"]        { visibility: hidden !important; }
+        [data-testid="stToolbarActions"] { visibility: hidden !important; }
+        [data-testid="stDecoration"]     { display: none !important; }
+        [data-testid="stStatusWidget"]   { display: none !important; }
+        [data-testid="collapsedControl"] { visibility: visible !important; display: flex !important; }
         [data-testid="stAppViewBlockContainer"] > div:first-child { padding-top: 0.5rem !important; }
 
         .block-container {
