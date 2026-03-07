@@ -15,7 +15,7 @@ from core.styles import apply_styles
 # ── Config página ──────────────────────────────────────────────
 st.set_page_config(
     page_title="Órdenes de Trabajo",
-    page_icon="🔧",
+    page_icon=None,
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -34,7 +34,7 @@ PAGINAS = [
 ]
 
 with st.sidebar:
-    st.title("🔧 Órdenes de Trabajo")
+    st.title("Órdenes de Trabajo")
     st.divider()
     pagina = st.radio("nav", PAGINAS, label_visibility="collapsed", key="nav_radio")
     st.divider()
