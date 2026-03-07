@@ -17,12 +17,20 @@ def get_css() -> str:
 
         #MainMenu                        { display: none !important; }
         footer                           { display: none !important; }
+        header                           { visibility: hidden !important; height: 0 !important; min-height: 0 !important; }
         [data-testid="stToolbar"]        { display: none !important; }
         [data-testid="stToolbarActions"] { display: none !important; }
         [data-testid="stStatusWidget"]   { display: none !important; }
         [data-testid="stDecoration"]     { display: none !important; }
         [data-testid="stAppViewBlockContainer"] > div:first-child { padding-top: 0.5rem !important; }
-        [data-testid="collapsedControl"] { display: flex !important; visibility: visible !important; }
+        [data-testid="collapsedControl"] {
+            display: flex !important;
+            visibility: visible !important;
+            position: fixed !important;
+            top: 0.4rem !important;
+            left: 0.4rem !important;
+            z-index: 9999 !important;
+        }
 
         .block-container {
             padding-top: 2rem;
