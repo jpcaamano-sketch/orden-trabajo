@@ -15,12 +15,8 @@ def get_css() -> str:
             background-color: #ffffff !important;
         }
 
-        #MainMenu { display: none !important; }
-        footer    { display: none !important; }
-        header    { visibility: hidden !important; }
-        [data-testid="stDecoration"]   { display: none !important; }
-        [data-testid="stStatusWidget"] { display: none !important; }
-        [data-testid="stToolbar"]      { display: none !important; }
+        #MainMenu { visibility: hidden; }
+        footer    { visibility: hidden; }
         [data-testid="stAppViewBlockContainer"] > div:first-child { padding-top: 0.5rem !important; }
 
         .block-container {
@@ -29,17 +25,11 @@ def get_css() -> str:
             max-width: 1100px;
         }
 
-        /* Sidebar navy — siempre visible, sin colapsar */
+        /* Sidebar navy */
         section[data-testid="stSidebar"] {
             background: #1a3a5c !important;
             box-shadow: 4px 0 15px rgba(0,0,0,0.2) !important;
-            transform: translateX(0) !important;
-            min-width: 244px !important;
-            width: 244px !important;
         }
-        /* Ocultar boton colapsar sidebar */
-        [data-testid="stSidebarCollapseButton"],
-        [data-testid="collapsedControl"] { display: none !important; }
         section[data-testid="stSidebar"] > div {
             background: transparent !important;
             padding-top: 0.5rem !important;
