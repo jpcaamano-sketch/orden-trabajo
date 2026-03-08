@@ -308,7 +308,7 @@ def _editar_solicitud(sol_id: int):
 # ──────────────────────────────────────────────────────────────
 
 def render():
-
+    st.title("Nueva Solicitud")
 
     tab_listado, tab_manual, tab_voz = st.tabs(["Todas las solicitudes", "Crear manual", "Revisión voz"])
 

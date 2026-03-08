@@ -33,7 +33,7 @@ def _fmt(val):
 
 
 def render():
-
+    st.title("Ejecución")
 
     solicitudes = q.get_solicitudes()
     activas     = [s for s in solicitudes if s["estado"] in ("planificada", "en_ejecucion")]

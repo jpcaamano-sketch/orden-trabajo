@@ -6,7 +6,7 @@ import core.queries as q
 
 
 def render():
-
+    st.title("Mantenedores")
 
     tab_cont, tab_notif, tab_cat = st.tabs(["Contactos", "Notificaciones", "Categorías"])
 

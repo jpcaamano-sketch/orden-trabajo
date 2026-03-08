@@ -31,7 +31,7 @@ def _fmt(val):
 
 
 def render():
-
+    st.title("Seguimiento Solicitudes")
 
     solicitudes = q.get_solicitudes()
     activas = [s for s in solicitudes if s["estado"] != "borrador"]

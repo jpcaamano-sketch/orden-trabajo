@@ -16,7 +16,7 @@ def _fecha_d(val):
 
 
 def render():
-
+    st.title("Seguimiento Tareas")
 
     solicitudes = q.get_solicitudes()
     activas     = [s for s in solicitudes if s["estado"] not in ("borrador", "cancelada")]

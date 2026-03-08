@@ -149,6 +149,7 @@ def _html_preview(filas):
 
 
 def render():
+    st.title("Seguimiento Sol & Tareas")
 
     solicitudes = q.get_solicitudes()
     todas = [s for s in solicitudes if s["estado"] != "borrador"]

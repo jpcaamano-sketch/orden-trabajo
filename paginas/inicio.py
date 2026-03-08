@@ -7,7 +7,7 @@ from core.styles import metric_card, badge_semaforo
 
 
 def render():
-
+    st.title("Inicio")
 
     solicitudes = q.get_solicitudes()
 
