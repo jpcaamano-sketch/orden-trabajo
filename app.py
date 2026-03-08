@@ -30,7 +30,7 @@ PAGINAS = [
     "Ejecución",
     "Seguimiento Solicitudes",
     "Seguimiento Tareas",
-    "Seguimiento Sol & Tareas",
+    "Seguimiento Solicitudes & Tareas",
 ]
 
 with st.sidebar:
@@ -59,7 +59,7 @@ elif pagina == "Seguimiento Solicitudes":
     from paginas.seguimiento import render
 elif pagina == "Seguimiento Tareas":
     from paginas.seguimiento_tareas import render
-elif pagina == "Seguimiento Sol & Tareas":
+elif pagina == "Seguimiento Solicitudes & Tareas":
     from paginas.seguimiento_combinado import render
 elif pagina == "Ejecución":
     from paginas.ejecucion import render
