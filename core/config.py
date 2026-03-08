@@ -18,7 +18,7 @@ SUPABASE_KEY = _s("SUPABASE_KEY", (
 
 ADMIN_PASSWORD = _s("ADMIN_PASSWORD", "ot2025")
 
-GOOGLE_API_KEY = _s("GOOGLE_API_KEY", "AIzaSyBsx1BEX3SiJHrUjTCBtNdk_0QLvpLOqZc")
+GOOGLE_API_KEY = _s("GOOGLE_API_KEY", "AIzaSyAMFUFxAPY2-JwHtVHCcsd5IyANFhwfvcg")
 APP_VOZ_URL    = _s("APP_VOZ_URL", "http://localhost:8528")
 
 SMTP_SERVER   = "smtp.gmail.com"
